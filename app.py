@@ -1,12 +1,12 @@
 import streamlit as st
-import streamlit.components.v1 as components
+# (Observe que não importamos mais 'components')
 
 # --- Configuração da Página ---
 st.set_page_config(page_title="Calculadora de Preços | Hub", layout="centered")
 
 # --- Título e Subtítulo ---
 st.title("Calculadora de Preços para Eventos")
-st.markdown("Uma ferramenta do **Encontro D'Água Hub** 💧")
+st.markdown("Uma ferramenta do **Encontro D'Água Hub** 🌀")
 st.markdown("Calcule preços justos para seus produtos e serviços de festas e eventos.")
 
 # --- 1. Materiais ---
@@ -96,7 +96,7 @@ st.markdown("Esta ferramenta é gratuita porque acreditamos em um mundo digital 
 st.markdown("---")
 st.markdown("[Solicite uma versão personalizada](https://tally.so/r/SEULINKAQUI) | [Avalie ou envie sugestões](https://tally.so/r/wbGRAy) | [Fale com a gente](https://wa.me/554192557600)")
 
-with st.expander("Sobre o Encontro D'Água Hub 💧"):
+with st.expander("Sobre o Encontro D'Água Hub 🌀"):
     st.markdown("""
     O Hub Encontro D’Água é um espaço digital colaborativo que une **tecnologia, ética e impacto social**.
     Criamos ferramentas com alma para apoiar mães, artistas e pequenos negócios.
@@ -106,7 +106,7 @@ with st.expander("Sobre o Encontro D'Água Hub 💧"):
     """)
 
 # --- INTEGRAÇÃO DA AMAZÔ (TYPEBOT) ---
-# (Este código insere a "bolha" do chatbot na página)
+# (Este código injeta a "bolha" do chatbot na página principal)
 
 CODIGO_EMBED_TYPEBOT = """
 <script>
@@ -127,6 +127,6 @@ CODIGO_EMBED_TYPEBOT = """
 </script>
 """
 
-components.html(CODIGO_EMBED_TYPEBOT, height=100)
+# A função correta é st.markdown com unsafe_allow_html=True
+st.markdown(CODIGO_EMBED_TYPEBOT, unsafe_allow_html=True)
 
-# --- Fim do Código ---
