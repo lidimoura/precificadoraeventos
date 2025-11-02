@@ -1,5 +1,5 @@
 import streamlit as st
-# (Observe que não importamos mais 'components')
+# (Não precisamos de 'components' nem de 'markdown' para o script)
 
 # --- Configuração da Página ---
 st.set_page_config(page_title="Calculadora de Preços | Hub", layout="centered")
@@ -94,7 +94,7 @@ if st.button("Calcular Preço Sugerido"):
 st.markdown("---")
 st.markdown("Esta ferramenta é gratuita porque acreditamos em um mundo digital mais justo. Se quiser apoiar nosso trabalho, agradecemos! Pix: `encontrodaguahub@gmail.com`")
 st.markdown("---")
-st.markdown("[Solicite uma versão personalizada](https://tally.so/r/SEULINKAQUI) | [Avalie ou envie sugestões](https://tally.so/r/wbGRAy) | [Fale com a gente](https://wa.me/554192557600)")
+st.markdown("[Solicite uma versão personalizada](https://tally.so/r/SEULINKAQUI) | [Avalie ou envie sugestões](https://t.co/r/wbGRAy) | [Fale com a gente](https://wa.me/554192557600)")
 
 with st.expander("Sobre o Encontro D'Água Hub 🌀"):
     st.markdown("""
@@ -106,27 +106,20 @@ with st.expander("Sobre o Encontro D'Água Hub 🌀"):
     """)
 
 # --- INTEGRAÇÃO DA AMAZÔ (TYPEBOT) ---
-# (Este código injeta a "bolha" do chatbot na página principal)
+# (v2.4 - Usando o código Iframe injetado com st.markdown)
 
-CODIGO_EMBED_TYPEBOT = """
-<script>
-  const typebotInitScript = document.createElement("script");
-  typebotInitScript.type = "module";
-  typebotInitScript.innerHTML = `
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
-    
-    Typebot.initBubble({
-      typebot: "amazo-chatbot-landingpage",
-      theme: {
-        button: { backgroundColor: "#1D1D1D" },
-        chatWindow: { backgroundColor: "#F8F8F8" },
-      },
-    });
-  `;
-  document.body.append(typebotInitScript);
-</script>
+st.markdown("---")
+st.subheader("Fale com a Amazô 🌀")
+st.markdown("Tem dúvidas ou quer uma consultoria? Fale com nossa assistente virtual para ser encaminhada para a Lidi.")
+
+# Usamos st.markdown para injetar o código HTML do iframe que você pegou
+CODIGO_IFRAME_TYPEBOT = """
+<iframe
+  src="https://typebot.co/amazo-chatbot-landingpage"
+  style="border: none; width: 100%; height: 600px"
+></iframe>
 """
 
-# A função correta é st.markdown com unsafe_allow_html=True
-st.markdown(CODIGO_EMBED_TYPEBOT, unsafe_allow_html=True)
+st.markdown(CODIGO_IFRAME_TYPEBOT, unsafe_allow_html=True)
 
+# --- Fim do Código ---
